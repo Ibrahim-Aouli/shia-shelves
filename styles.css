@@ -26,11 +26,11 @@
     --body-color: var(--black);
 
     /* Font Sizes */
-    --font-size-sm: 0.8rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.2rem;
+    --font-size-sm: 1rem;
+    --font-size-md: 1.2rem;
+    --font-size-lg: 1.5rem;
     --font-size-xl: 2rem;
-    --font-size-xxl: 3rem;
+    --font-size-xxl: 3.5rem;
 
     /* Spacing */
     --spacing-xs: 4px;
@@ -47,13 +47,18 @@
     --border-radius-xl: 16px;
 
     /* Header and Footer Heights */
-    --header-height: 60px;
+    --header-height: 96px;
     --footer-height: 100px;
 
     /* Content Dimensions */
     --content-width-sm: 300px;
     --content-width-md: 600px;
     --content-width-lg: 900px;
+
+    /* Animations */
+    --animation-slow: 0.5s;
+    --animation-normal: 0.3s;
+    --animation-fast: 0.15s;
 
     /* Navigation Bar */
     --nav-bg-color: var(--green-dark);
@@ -88,7 +93,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 
@@ -96,6 +100,7 @@ body {
     font-family: var(--font-body);
     background-color: var(--off-white);
     color: var(--body-color);
+
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -110,11 +115,25 @@ h5,
 h6 {
     color: var(--heading-color);
     font-family: var(--font-heading);
+    margin: var(--spacing-md) 0;
+    padding: 0 var(--spacing-sm);
 }
+
+h1{
+    font-size: var(--font-size-xxl);
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+}
+
 
 p {
     color: var(--body-color);
     font-family: var(--font-body);
+    font-size: var(--font-size-md);
+    padding: 0 var(--spacing-lg);
+    margin: var(--spacing-md) 0;
 }
 
 section,
@@ -123,23 +142,7 @@ main,
 header,
 footer {
     width: 100%;
-    
-    /* overflow-x: hidden; */
     position: relative;
-}
-
-.pattern {
-    background-image: url(pattern.svg);
-    background-size: 1000px 1000px;
-    opacity: .2;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-
-    z-index: 9999;
-    pointer-events: none;
 }
 
 /* -------------------------------------- */
@@ -147,24 +150,44 @@ footer {
 /* -------------------------------------- */
 
 header {
-    background-color: var(--nav-bg-color);
-    color: var(--nav-text-color);
-    height: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background-color: var(--nav-bg-color);
+    color: var(--nav-text-color);
     padding: var(--spacing-md);
 }
+
 
 /* -------------------------------------- */
 /* Navigation Styles                      */
 /* -------------------------------------- */
 
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: var(--header-height);
+}
+
+header nav .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+}
+
 header nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: var(--spacing-lg);
+    flex-wrap: wrap;
 }
 
 header nav ul li {
@@ -179,10 +202,11 @@ header nav ul li a {
     color: var(--nav-link-color);
     cursor: not-allowed;
     position: relative;
+    transition: color var(--animation-normal) ease, background-color var(--animation-normal) ease;
 }
 
 header nav ul li a:hover {
-    background-color: var(--nav-bg-color);
+    background-color: #00000010;
     color: var(--nav-highlight-color);
 }
 
@@ -212,50 +236,81 @@ main {
 }
 
 .hero .logo {
-    width: var(--content-width-sm);
-    height: auto;
+    max-height: 320px;
+    width: auto;
+    max-width: 80vw;
     margin-bottom: var(--spacing-md);
 }
 
 .hero h1 {
     font-family: var(--font-heading);
     font-size: var(--font-size-xxl);
-    color: var(--body-color);
     margin-bottom: var(--spacing-md);
 }
 
 .hero p {
-    font-size: var(--font-size-lg);
-    margin: var(--spacing-sm) 0;
-}
-
-/* -------------------------------------- */
-/* Subscribe Section                      */
-/* -------------------------------------- */
-
-.subscribe input[type="email"] {
-    padding: var(--spacing-sm);
-    width: var(--content-width-sm);
-    border: 1px solid var(--brown-light);
-    border-radius: var(--border-radius-md);
-    margin-right: var(--spacing-sm);
-    background-color: var(--cream);
-}
-
-.subscribe button {
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: none;
-    border-radius: var(--border-radius-md);
-    background: var(--green);
-    color: var(--white);
-    cursor: pointer;
-    font-family: var(--font-heading);
     font-size: var(--font-size-md);
 }
 
-.subscribe button:hover {
-    background: var(--green-dark);
+/* Main Links Section */
+.main-links ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
 }
+
+.main-links ul li {
+
+}
+
+.main-links a {
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    color: var(--link-color);
+}
+
+.main-links a:hover {
+    color: var(--link-hover-color);
+}
+
+.main-links i {
+    color: var(--icon-color);
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-xxl: 3rem;
+        --font-size-xl: 1.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --font-size-xxl: 2.5rem;
+        --font-size-xl: 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    :root {
+        --font-size-xxl: 2rem;
+        --font-size-xl: 1.25rem;
+        --font-size-md: 1.1rem;
+    }
+}
+
+
+
 
 /* -------------------------------------- */
 /* Footer Styles                          */
@@ -284,6 +339,9 @@ footer {
     list-style: none;
     display: flex;
     gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     padding: 0;
     margin: 0;
 }
@@ -307,13 +365,6 @@ footer {
     font-size: var(--font-size-lg);
 }
 
-/* Headings Styling */
-.hero h1,
-.footer-links h2 {
-    color: var(--green); /* Heading color */
-    font-family: var(--font-heading);
-}
-
 /* Footer Legal Section */
 .footer-legal {
     background-color: var(--footer-legal-bg-color);
@@ -334,28 +385,4 @@ footer {
     color: var(--green-light);
 }
 
-/* Main Links Section */
-.main-links ul {
-    text-decoration: none;
-    list-style: none;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    margin-top: var(--spacing-lg);
-    gap: var(--spacing-lg);
-}
-
-.main-links a {
-    text-decoration: none;
-    font-size: var(--font-size-lg);
-    color: var(--link-color);
-}
-
-.main-links a:hover {
-    color: var(--link-hover-color);
-}
-
-.main-links i {
-    color: var(--icon-color);
-}
 
