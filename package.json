@@ -1,0 +1,14 @@
+{
+  "name": "shia-shelves",
+  "version": "1.0.0",
+  "description": "Shia Shelves Development Environment",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "start:backend": "npm start --prefix backend",
+    "start:frontend": "npm start --prefix frontend",
+    "start:all": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

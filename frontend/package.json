@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "lite-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "The frontend provides the user interface for browsing, searching, and purchasing books on the Shia Shelves platform. It is built using modern web technologies and designed to be responsive across devices.",
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "shia-shelves": "file:.."
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
   }
 }
