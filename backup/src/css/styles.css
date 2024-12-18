@@ -1,0 +1,388 @@
+/* -------------------------------------- */
+/* General Styles                         */
+/* -------------------------------------- */
+
+:root {
+    /* General Colors */
+    --white: #FFFFFF;
+    --off-white: #F1F1F1;
+    --grey: #C0C0C0;
+    --grey-dark: #606060;
+    --black: #101010;
+    --green-dark: #468A46;
+    --green: #66AA66;
+    --green-light: #86CA86;
+    --yellow-light: #EEEE88;
+    --yellow: #DDDD68;
+    --cream: #FFFFCC;
+    --brown-dark: #4A2D20;
+    --brown: #7A4D40;
+    --brown-light: #9A6D60;
+
+    /* Fonts */
+    --font-heading: 'League Spartan', sans-serif;
+    --font-body: 'Almarai', sans-serif;
+    --heading-color: var(--green);
+    --body-color: var(--black);
+
+    /* Font Sizes */
+    --font-size-sm: 1rem;
+    --font-size-md: 1.2rem;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 2rem;
+    --font-size-xxl: 3.5rem;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+
+    /* Border Radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+
+    /* Header and Footer Heights */
+    --header-height: 96px;
+    --footer-height: 100px;
+
+    /* Content Dimensions */
+    --content-width-sm: 300px;
+    --content-width-md: 600px;
+    --content-width-lg: 900px;
+
+    /* Animations */
+    --animation-slow: 0.5s;
+    --animation-normal: 0.3s;
+    --animation-fast: 0.15s;
+
+    /* Navigation Bar */
+    --nav-bg-color: var(--green-dark);
+    --nav-text-color: var(--white);
+    --nav-link-color: var(--green-light);
+    --nav-highlight-color: var(--yellow-light);
+
+    /* Footer Links Section */
+    --footer-links-bg-color: var(--grey-dark);
+    --footer-links-text-color: var(--white);
+    --footer-links-link-color: var(--white);
+    --footer-links-highlight-color: var(--green-light);
+    --footer-links-icon-color: var(--green);
+
+     /* Link Colors */
+     --link-color: var(--black); 
+     --link-hover-color: var(--green-dark); 
+     --icon-color: var(--green); 
+     --icon-hover-color: var(--yellow-light); 
+
+    /* Footer Legal Section */
+    --footer-legal-bg-color: var(--black);
+    --footer-legal-text-color: var(--white);
+    --footer-legal-link-color: var(--off-white);
+    --footer-legal-highlight-color: var(--white);
+}
+
+
+
+/* Reset and General Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--off-white);
+    color: var(--body-color);
+
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading-color);
+    font-family: var(--font-heading);
+    margin: var(--spacing-md) 0;
+    padding: 0 var(--spacing-sm);
+}
+
+h1{
+    font-size: var(--font-size-xxl);
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+}
+
+
+p {
+    color: var(--body-color);
+    font-family: var(--font-body);
+    font-size: var(--font-size-md);
+    padding: 0 var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+}
+
+section,
+div,
+main,
+header,
+footer {
+    width: 100%;
+    position: relative;
+}
+
+/* -------------------------------------- */
+/* Header Styles                          */
+/* -------------------------------------- */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--nav-bg-color);
+    color: var(--nav-text-color);
+    padding: var(--spacing-md);
+}
+
+
+/* -------------------------------------- */
+/* Navigation Styles                      */
+/* -------------------------------------- */
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: var(--header-height);
+}
+
+header nav .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+header nav ul li {
+    font-family: var(--font-heading);
+}
+
+header nav ul li a {
+    text-decoration: none;
+    font-size: var(--font-size-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    color: var(--nav-link-color);
+    cursor: not-allowed;
+    position: relative;
+    transition: color var(--animation-normal) ease, background-color var(--animation-normal) ease;
+}
+
+header nav ul li a:hover {
+    background-color: #00000010;
+    color: var(--nav-highlight-color);
+}
+
+/* -------------------------------------- */
+/* Section Layout                         */
+/* -------------------------------------- */
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-xl);
+    max-width: var(--content-width-lg);
+    margin: 0 auto;
+}
+
+
+/* -------------------------------------- */
+/* Hero Section                           */
+/* -------------------------------------- */
+
+.hero {
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero .logo {
+    max-height: 320px;
+    width: auto;
+    max-width: 80vw;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero p {
+    font-size: var(--font-size-md);
+}
+
+/* Main Links Section */
+.main-links ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+}
+
+.main-links ul li {
+
+}
+
+.main-links a {
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    color: var(--link-color);
+}
+
+.main-links a:hover {
+    color: var(--link-hover-color);
+}
+
+.main-links i {
+    color: var(--icon-color);
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-xxl: 3rem;
+        --font-size-xl: 1.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --font-size-xxl: 2.5rem;
+        --font-size-xl: 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    :root {
+        --font-size-xxl: 2rem;
+        --font-size-xl: 1.25rem;
+        --font-size-md: 1.1rem;
+    }
+}
+
+
+
+
+/* -------------------------------------- */
+/* Footer Styles                          */
+/* -------------------------------------- */
+
+/* Footer Styling */
+footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: var(--font-size-md);
+}
+
+/* Footer Links Section */
+.footer-links {
+    background-color: var(--footer-links-bg-color);
+    padding: var(--spacing-xl);
+    color:var(--footer-links-text-color); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links a {
+    color:var(--footer-links-link-color); 
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs); 
+}
+
+.footer-links a:hover {
+    color:var(--footer-links-highlight-color); 
+}
+
+.footer-links i {
+    color:var(--footer-links-icon-color); 
+    font-size: var(--font-size-lg);
+}
+
+/* Footer Legal Section */
+.footer-legal {
+    background-color: var(--footer-legal-bg-color);
+    padding: var(--spacing-sm);
+}
+
+.footer-legal p {
+    color: var(--footer-legal-text-color);
+}
+
+.footer-legal a {
+    color: var(--footer-legal-link-color);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+}
+
+.footer-legal a:hover {
+    color: var(--green-light);
+}
+
+
