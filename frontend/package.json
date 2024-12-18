@@ -1,19 +1,38 @@
 {
-  "name": "shia-shelves",
-  "version": "1.0.0",
-  "main": "app.js",
-  "scripts": {
-    "start": "lite-server"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "The frontend provides the user interface for browsing, searching, and purchasing books on the Shia Shelves platform. It is built using modern web technologies and designed to be responsive across devices.",
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "bootstrap": "^5.3.3",
-    "shia-shelves": "file:.."
+    "axios": "^1.7.9",
+    "cra-template": "1.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.0.2",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^4.2.4"
   },
-  "devDependencies": {
-    "lite-server": "^2.6.1"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

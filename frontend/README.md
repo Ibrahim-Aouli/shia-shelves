@@ -1,99 +1,70 @@
-# Shia Shelves Frontend
+# Getting Started with Create React App
 
-The frontend provides the user interface for browsing, searching, and purchasing books on the Shia Shelves platform. It is built using modern web technologies and designed to be responsive across devices.
-
----
-
-## Features
-
-- Responsive design for desktop and mobile.
-- Book browsing with filtering and search functionality.
-- User authentication and profile management.
-- Shopping cart and checkout functionality.
-
----
-
-## Prerequisites
-
-Ensure you have the following installed:
-- **Node.js** (v16.x or later)
-- **npm** or **yarn**
-
----
-
-## Setup Instructions
-
-### 1. Navigate to the Frontend Directory
-```bash
-cd frontend
-```
-
-### 2. Install Dependencies
-```bash
-npm install
-```
-
-### 3. Start the Development Server
-```bash
-npm start
-```
-
-This will start the application in development mode and open it in your default web browser.
-
----
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-- `npm start`: Start the development server.
-- `npm build`: Build the application for production.
-- `npm test`: Run tests.
+In the project directory, you can run:
 
----
+### `npm start`
 
-## Project Structure
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-```plaintext
-frontend/
-├── public/         # Static files (e.g., index.html)
-├── src/
-│   ├── components/ # Reusable UI components
-│   ├── pages/      # Page-level components
-│   ├── services/   # API interaction logic
-│   ├── styles/     # Global and component-specific styles
-│   ├── App.js      # Main application component
-│   └── index.js    # Entry point
-└── package.json    # Dependency management
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
----
+### `npm test`
 
-## Pages
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- **Homepage**: Highlights featured books and categories.
-- **Gallery**: Displays books with filters and sorting options.
-- **Book Details**: Detailed information about individual books.
-- **Cart**: Manage selected books.
-- **Checkout**: Enter payment and delivery information.
-- **Profile**: Manage user information and view order history.
+### `npm run build`
 
----
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Development Notes
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-- Use environment variables for configuration. Create a `.env` file in the `frontend/` directory if needed.
-- Ensure API endpoints in the `services/` folder are correctly linked to the backend.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
----
+### `npm run eject`
 
-## Contribution Guidelines
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-- Use consistent styling and naming conventions.
-- Document any new components added.
-- Test all new functionality before merging.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
----
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## License
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-This project is licensed under [MIT License](../LICENSE).
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
