@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { Product } = require("../models/Product");
+const authenticateToken = require("../middleware/authMiddleware");
+const authorizeRoles = require("../middleware/authorizeRoles");
 
 // GET /products → List all products with filters
 router.get("/", async (req, res) => {
@@ -24,42 +26,45 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// POST /products → Add a new product (Admin only)
-router.post("/", async (req, res) => {
+// POST /products → Add a new product (Admin Only)
+router.post("/", authenticateToken, authorizeRoles(["admin"]), async (req, res) => {
   try {
-    const productData = req.body;
-    const newProduct = new Product(productData);
-    await newProduct.save();
-    res.status(201).json(newProduct);
+    const newProduct = new Product(req.body);
+    const savedProduct = await newProduct.save();
+    res.status(201).json(savedProduct);
   } catch (err) {
+    console.error("Error adding product:", err);
     res.status(500).json({ error: "Server Error", message: err.message });
   }
 });
 
-// PUT /products/:id → Update an existing product (Admin only)
-router.put("/:id", async (req, res) => {
+// PUT /products/:id → Update a product (Admin Only)
+router.put("/:id", authenticateToken, authorizeRoles(["admin"]), async (req, res) => {
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedProduct)
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true, // Return the updated document
+      runValidators: true, // Apply schema validation
+    });
+    if (!updatedProduct) {
       return res.status(404).json({ error: "Product not found" });
+    }
     res.json(updatedProduct);
   } catch (err) {
+    console.error("Error updating product:", err);
     res.status(500).json({ error: "Server Error", message: err.message });
   }
 });
 
-// DELETE /products/:id → Delete a product (Admin only)
-router.delete("/:id", async (req, res) => {
+// DELETE /products/:id → Delete a product (Admin Only)
+router.delete("/:id", authenticateToken, authorizeRoles(["admin"]), async (req, res) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-    if (!deletedProduct)
+    if (!deletedProduct) {
       return res.status(404).json({ error: "Product not found" });
+    }
     res.json({ msg: "Product deleted successfully" });
   } catch (err) {
+    console.error("Error deleting product:", err);
     res.status(500).json({ error: "Server Error", message: err.message });
   }
 });
