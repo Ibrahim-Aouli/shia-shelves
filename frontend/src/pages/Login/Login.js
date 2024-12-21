@@ -1,6 +1,6 @@
-// src/pages/Login/Login.js
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../api/auth";
 import AuthContext from "../../context/AuthContext";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -14,13 +14,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Simulate successful login
-      const token = "fake-jwt-token";
-      const user = { email };
-      login(token, user);
+      const data = await loginUser({ email, password });
+      login(data.token, { email: data.email, id: data.userId });
       navigate("/");
-    } catch (err) {
-      alert("Login failed");
+    } catch {
+      alert("Login failed.");
     }
   };
 
@@ -32,15 +30,15 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
           />
           <input
             type="password"
-            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
           />
           <button type="submit">Login</button>
         </form>

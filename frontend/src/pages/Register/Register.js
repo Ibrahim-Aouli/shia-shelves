@@ -1,6 +1,6 @@
-// src/pages/Register/Register.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../api/auth";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
@@ -14,10 +14,11 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      await registerUser({ email, password, firstName, lastName });
       alert("Registration successful!");
       navigate("/login");
-    } catch (err) {
-      alert("Registration failed");
+    } catch {
+      alert("Registration failed.");
     }
   };
 
@@ -29,27 +30,27 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder="First Name"
           />
           <input
             type="text"
-            placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder="Last Name"
           />
           <input
             type="email"
-            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
           />
           <input
             type="password"
-            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
           />
           <button type="submit">Register</button>
         </form>
