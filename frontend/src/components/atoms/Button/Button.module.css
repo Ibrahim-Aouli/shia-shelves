@@ -1,9 +1,11 @@
 .button {
-  display: inline-flex; /* Ensures proper alignment of text and icon */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-xs); /* Space between icon and text */
+  gap: var(--spacing-xs);
   padding: var(--spacing-sm) var(--spacing-md);
+  min-height: 2rem;
+  min-width: 2rem;
   border: transparent;
   border-radius: var(--border-radius-lg);
   font-size: var(--font-size-base);
@@ -12,45 +14,78 @@
   background-color: var(--color-green);
   color: var(--color-white);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.button:hover {
+/* Hover Effects */
+.button:hover:not(:disabled):not(.loading) {
   background-color: var(--color-green-light);
 }
 
+/* Secondary Button */
 .button.secondary {
   background-color: var(--color-grey-light);
   color: var(--color-black);
 }
 
-.button.secondary:hover {
-  background-color: var(--color-white-dark);
-  color: var(--color-black-light);
+.button.secondary:hover:not(:disabled):not(.loading) {
+  background-color: var(--color-grey);
+  color: var(--color-white);
 }
 
+/* Outline Button */
 .button.outline {
   background-color: transparent;
   border: 1px solid var(--color-green-dark);
   color: var(--color-green-dark);
 }
 
-.button.outline:hover {
+.button.outline:hover:not(:disabled):not(.loading) {
+  background-color: transparent;
   color: var(--color-green-light);
   box-shadow: 0 0 var(--spacing-xs) var(--color-green-light);
+}
+
+/* Danger Button */
+.button.danger {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.button.danger:hover:not(:disabled):not(.loading) {
+  background-color: var(--color-red-dark);
+}
+
+/* Shape Variants */
+.button.pill {
+  border-radius: 50px;
+}
+
+.button.square {
+  border-radius: 0;
+}
+
+/* Full-width button */
+.button.fullWidth {
+  width: 100%;
 }
 
 .button.small {
   font-size: var(--font-size-sm);
   padding: var(--spacing-xs) var(--spacing-sm);
+  min-height: 2rem;
+  min-width: 2rem;
 }
 
 .button.large {
   font-size: var(--font-size-lg);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-md) var(--spacing-lg);
+  min-height: 3rem;
+  min-width: 3rem;
 }
 
+/* Disabled State */
 .button:disabled {
   background-color: var(--color-black-light);
   color: var(--color-grey);
@@ -62,34 +97,47 @@
   outline-offset: 2px;
 }
 
-.button.icon {
-  gap: var(--spacing-sm); /* Adjusts the space between icon and text */
-}
-
-.button.icon-only {
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 50%; /* Circular button */
-  padding: 0; /* Ensures the icon is centered */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.button.icon-only svg {
-  width: 1.5em; /* Ensures icon scales consistently */
-  height: 1.5em;
-  fill: currentColor;
-  margin: 0; /* Removes unwanted spacing */
-}
-
 /* Loading State */
 .button.loading {
-  opacity: .7;
+  opacity: 0.7;
   pointer-events: none;
 }
 
 .loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
   font-size: var(--font-size-sm);
-  color: var(--color-grey-light);
+  color: currentColor;
+}
+
+.loader span {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: loaderBounce 1.4s infinite ease-in-out both;
+}
+
+.loader span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loader span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.loader span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes loaderBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
 }
