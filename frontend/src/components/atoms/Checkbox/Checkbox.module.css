@@ -19,11 +19,7 @@
   display: none; /* Hide the default checkbox */
 }
 
-.checkboxInput:disabled + .checkboxCustom,
-.checkboxInput:disabled + .checkboxCustom:hover{
-  background-color: var(--color-white) !important;
-  border: 2px solid var(--color-white-dark) !important;
-}
+
 
 .checkboxCustom {
   width: 1.5rem;

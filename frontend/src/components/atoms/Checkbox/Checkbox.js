@@ -1,31 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Label from "../Label/Label";
 import styles from "./Checkbox.module.css";
 
-const Checkbox = ({ id, checked, onChange, label, required = false }) => {
+const Checkbox = ({ label, checked, onChange, disabled = false }) => {
   return (
-    <div className={styles.checkboxWrapper}>
+    <label className={`${styles.checkboxLabel} ${disabled ? styles.disabled : ""}`}>
       <input
-        id={id}
         type="checkbox"
         checked={checked}
         onChange={onChange}
+        disabled={disabled}
         className={styles.checkboxInput}
       />
-      <Label htmlFor={id} required={required}>
-        {label}
-      </Label>
-    </div>
+      <span className={styles.checkboxCustom}></span>
+      {label && <span className={styles.checkboxText}>{label}</span>}
+    </label>
   );
 };
 
+// Adding PropTypes for type validation
 Checkbox.propTypes = {
-  id: PropTypes.string.isRequired, // ID for input and label linking
-  checked: PropTypes.bool.isRequired, // Checkbox state
+  label: PropTypes.string, // Label for the checkbox
+  checked: PropTypes.bool.isRequired, // Whether the checkbox is checked
   onChange: PropTypes.func.isRequired, // Change handler
-  label: PropTypes.string.isRequired, // Label text
-  required: PropTypes.bool, // Indicate required field
+  disabled: PropTypes.bool, // Whether the checkbox is disabled
 };
 
 export default Checkbox;
