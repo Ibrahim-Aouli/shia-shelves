@@ -1,0 +1,19 @@
+.container {
+    padding: var(--spacing-lg);
+    font-family: var(--font-family-secondary);
+    max-width: var(--container-width);
+    margin: 0 auto;
+  }
+  
+  section {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border: var(--border-width) solid var(--color-grey);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-light);
+  }
+
+  section > * {
+    margin: var(--spacing-sm) !important;
+  }
+  

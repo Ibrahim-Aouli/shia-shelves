@@ -1,0 +1,106 @@
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevents image overflow */
+  transition: transform 0.2s ease;
+}
+
+/* Base Image Style */
+.image {
+  transition: transform 0.3s ease;
+}
+
+/* Default Shadow */
+.shadow .image {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hover Effects */
+.imageWrapper:hover {
+  transform: scale(1.02); 
+}
+
+/* Border Styles */
+.border-solid {
+  border: 2px solid var(--color-grey-dark);
+}
+
+.border-dashed {
+  border: 2px dashed var(--color-grey-dark);
+}
+
+.border-dotted {
+  border: 2px dotted var(--color-grey-dark);
+}
+
+.border-rounded {
+  border-radius: var(--border-radius-lg);
+}
+
+/* Preset Sizes */
+.small {
+  width: 100px;
+  height: 100px;
+}
+
+.medium {
+  width: 200px;
+  height: 200px;
+}
+
+.large {
+  width: 400px;
+  height: 400px;
+}
+
+.fullWidth {
+  width: 100%;
+  height: auto;
+}
+
+.fullHeight {
+  width: auto;
+  height: 100%;
+}
+
+/* Custom Fit Behaviors */
+.fit-cover {
+  object-fit: cover;
+}
+
+.fit-contain {
+  object-fit: contain;
+}
+
+.fit-fill {
+  object-fit: fill;
+}
+
+.fit-width {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.fit-height {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Loader Placement */
+.loaderWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

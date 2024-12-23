@@ -1,0 +1,52 @@
+/* Container for the divider */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing-lg) 0;
+  position: relative;
+}
+
+/* Base divider styles */
+.divider {
+  flex-grow: 1;
+  border: none;
+}
+
+/* Style variants for the divider */
+.solid {
+  border-top-style: solid;
+}
+
+.dashed {
+  border-top-style: dashed;
+}
+
+.dotted {
+  border-top-style: dotted;
+}
+
+.none {
+  background: none;
+  border: none;
+}
+
+/* Colors */
+.grey-dark {
+  border-color: var(--color-grey-dark);
+}
+
+.green {
+  border-color: var(--color-green);
+}
+
+/* Label styling */
+.label {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-grey-dark);
+  padding: 0 var(--spacing-sm);
+  white-space: nowrap;
+  z-index: 1;
+}

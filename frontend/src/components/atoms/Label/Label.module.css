@@ -1,0 +1,6 @@
+.label {
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  margin-bottom: var(--spacing-xs);
+  font-family: var(--font-family-primary);
+}
