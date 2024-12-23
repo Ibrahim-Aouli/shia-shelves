@@ -1,0 +1,112 @@
+/* Global Styles */
+
+html {
+    font-size: 100%; /* Default font size (16px) */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+  }
+  
+  body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-secondary);
+    color: var(--color-black);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  h1 {
+    font-size: var(--font-size-xxl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  h4, h5, h6 {
+    font-size: var(--font-size-base);
+  }
+  
+  /* Links */
+  a {
+    color: var(--color-green);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  a:hover {
+    color: var(--color-green-light);
+  }
+  
+  a:focus {
+    outline: 2px dashed var(--color-green-dark);
+    outline-offset: 2px;
+  }
+  
+  /* Buttons */
+  button {
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  /* Lists */
+  ul, ol {
+    margin-left: var(--spacing-md);
+  }
+  
+  /* Images */
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Form Elements */
+  input, textarea, select, button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: var(--spacing-sm);
+    text-align: left;
+    border-bottom: var(--border-width) solid var(--color-grey-light);
+  }
+  
+  /* Divider */
+  hr {
+    border: 0;
+    height: var(--border-width);
+    background-color: var(--color-grey-light);
+    margin: var(--spacing-lg) 0;
+  }
+  
