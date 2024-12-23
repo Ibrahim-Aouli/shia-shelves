@@ -1,34 +1,79 @@
-.input {
-  all: unset; /* Reset default browser styles */
-  width: 100%;
-  max-width: 20rem;
-  padding: var(--spacing-xs);
-  border: var(--border-width) solid var(--color-grey-dark);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-base);
-  font-family: var(--font-family-primary);
-  line-height: var(--line-height-base);
-  color: var(--color-black);
-  background-color: var(--color-white);
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+/* Input Wrapper */
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
 }
 
-.input:focus {
+/* Base Input Styles */
+.input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-primary);
+  border-radius: var(--border-radius-md);
+  border: 2px solid var(--color-grey-light);
+  background-color: var(--color-white);
+  transition: border-color 0.2s ease;
+}
+
+/* Size Variants */
+.small {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.medium {
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.large {
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+/* Variant Styles */
+.outline {
+  background-color: var(--color-white);
+}
+
+.filled {
+  background-color: var(--color-grey-light);
+  border: none;
+}
+
+.underlined {
+  border: none;
+  border-bottom: 2px solid var(--color-grey-light);
+  border-radius: 0;
+}
+
+/* Error State */
+.error {
+  border-color: var(--color-red);
+}
+
+.errorMessage {
+  font-size: var(--font-size-sm);
+  color: var(--color-red-dark);
+}
+
+/* Focus and Hover Effects */
+.input:focus,
+.input:focus:hover {
   border-color: var(--color-green);
-  box-shadow: 0 0 var(--spacing-xs) var(--color-green-light);
   outline: none;
 }
 
-.input.error {
-  border-color: hsl(0, 70%, 50%);
-  background-color: hsl(0, 100%, 90%);
-  color: hsl(0, 50%, 40%);
+.input:hover {
+  border-color: var(--color-grey);
 }
 
-.input[disabled] {
+/* Disabled State */
+.input:disabled {
   background-color: var(--color-grey-light);
+  border-color: var(--color-grey-dark);
   color: var(--color-grey-dark);
-  border-color: var(--color-grey);
   cursor: not-allowed;
 }

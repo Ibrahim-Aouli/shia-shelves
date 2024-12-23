@@ -1,6 +1,47 @@
+/* Base label styles */
 .label {
-  font-size: var(--font-size-sm);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
   color: var(--color-black);
   margin-bottom: var(--spacing-xs);
-  font-family: var(--font-family-primary);
+  display: inline-block;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Size variants */
+.small {
+  font-size: var(--font-size-sm);
+}
+
+.medium {
+  font-size: var(--font-size-base);
+}
+
+.large {
+  font-size: var(--font-size-lg);
+}
+
+/* Color variants */
+.default {
+  color: var(--color-black);
+}
+
+.grey {
+  color: var(--color-grey-dark);
+}
+
+.green {
+  color: var(--color-green);
+}
+
+.red {
+  color: var(--color-red);
+}
+
+/* Required indicator */
+.required {
+  color: var(--color-red);
+  margin-left: var(--spacing-xs);
+  font-size: var(--font-size-sm);
 }

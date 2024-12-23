@@ -19,8 +19,15 @@ const Image = ({
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    setHasError(false);
+    // Check if the image is already loaded (cached)
+    const img = new window.Image(); // Explicitly use window.Image to avoid conflict
+    img.src = src;
+    if (img.complete) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      setHasError(false);
+    }
   }, [src]);
 
   const handleLoad = () => setIsLoading(false);

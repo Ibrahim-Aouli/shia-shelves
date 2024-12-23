@@ -6,7 +6,6 @@ import Products from "../pages/Products/Products";
 import Orders from "../pages/Orders/Orders";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import TestAtoms from "../pages/TestAtoms/TestAtoms";
 
 const AppRouter = () => {
   return (
@@ -17,7 +16,6 @@ const AppRouter = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/test-atoms" element={<TestAtoms />} />
       </Routes>
     </Router>
   );

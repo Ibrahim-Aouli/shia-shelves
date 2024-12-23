@@ -1,0 +1,30 @@
+.card {
+    background-color: var(--color-light);
+    border: var(--border-width) solid var(--color-grey);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+  
+  .card-title {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-large);
+    color: var(--color-dark-green);
+  }
+  
+  .card-title.arabic {
+    font-family: var(--font-family-arabic-heading);
+  }
+  
+  .card-description {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-base);
+    color: var(--color-grey-dark);
+  }
+  

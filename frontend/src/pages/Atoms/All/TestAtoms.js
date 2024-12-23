@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import Avatar from "../../components/atoms/Avatar/Avatar";
-import Button from "../../components/atoms/Button/Button";
-import Input from "../../components/atoms/Input/Input";
-import Label from "../../components/atoms/Label/Label";
-import Checkbox from "../../components/atoms/Checkbox/Checkbox";
-import RadioButton from "../../components/atoms/RadioButton/RadioButton";
-import Icon from "../../components/atoms/Icon/Icon";
-import Image from "../../components/atoms/Image/Image";
-import Heading from "../../components/atoms/Heading/Heading";
-import Divider from "../../components/atoms/Divider/Divider";
-import Link from "../../components/atoms/Link/Link";
-import Loader from "../../components/atoms/Loader/Loader";
+import Avatar from "../../../components/atoms/Avatar/Avatar";
+import Button from "../../../components/atoms/Button/Button";
+import Input from "../../../components/atoms/Input/Input";
+import Label from "../../../components/atoms/Label/Label";
+import Checkbox from "../../../components/atoms/Checkbox/Checkbox";
+import RadioButton from "../../../components/atoms/RadioButton/RadioButton";
+import Icon from "../../../components/atoms/Icon/Icon";
+import Image from "../../../components/atoms/Image/Image";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Divider from "../../../components/atoms/Divider/Divider";
+import Link from "../../../components/atoms/Link/Link";
+import Loader from "../../../components/atoms/Loader/Loader";
 import styles from "./TestAtoms.module.css";
 
 const TestAtoms = () => {
@@ -122,7 +122,9 @@ const TestAtoms = () => {
         <Divider styleType="dashed" />
         <Divider styleType="dotted" />
         <Divider styleType="none" />
-        <Divider withLabel label="OR" styleType="solid" />
+        <Divider withLabel label="OR" styleType="solid" alignment="left"/>
+        <Divider withLabel label="OR" styleType="solid" alignment="center"/>
+        <Divider withLabel label="OR" styleType="solid" alignment="right"/>
         <Divider withLabel label="Step 1" color="green" />
       </section>
 
@@ -257,28 +259,30 @@ const TestAtoms = () => {
         </div>
       </section>
 
-
       {/* Inputs */}
       <section>
         <Heading level={2}>Inputs</Heading>
-        <Label htmlFor="default-input">Default Input</Label>
-        <Input id="default-input" placeholder="Enter text here..." />
 
-        <Label htmlFor="small-input">Small Input</Label>
-        <Input id="small-input" size="small" placeholder="Small Input" />
-
-        <Label htmlFor="large-input">Large Input</Label>
-        <Input id="large-input" size="large" placeholder="Large Input" />
-
-        <Label htmlFor="error-input">Error Input</Label>
-        <Input id="error-input" error placeholder="Invalid input" />
-
-        <Label htmlFor="password-input">Password Input</Label>
-        <Input
-          id="password-input"
-          type="password"
-          placeholder="Enter password"
-        />
+          <Input
+            placeholder="Type something..."
+            defaultValue="Prefilled Value"
+          />
+          <Input size="small" placeholder="Small Input" />
+          <Input size="medium" placeholder="Medium Input" />
+          <Input size="large" placeholder="Large Input" />
+          <Input variant="outline" placeholder="Outline Input" />
+          <Input variant="filled" placeholder="Filled Input" />
+          <Input variant="underlined" placeholder="Underlined Input" />
+          <Input
+            placeholder="Invalid Input"
+            error
+            errorMessage="This field is required"
+          />
+          <Input placeholder="Can't type here" disabled />
+          <Input type="text" placeholder="Text Input" />
+          <Input type="password" placeholder="Password Input" />
+          <Input type="email" placeholder="Email Input" />
+          <Input type="number" placeholder="Number Input" />
       </section>
 
       {/* RadioButton */}

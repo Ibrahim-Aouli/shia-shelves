@@ -1,0 +1,6 @@
+.searchBar {
+    display: flex;
+    gap: var(--spacing-small);
+    align-items: center;
+  }
+  
