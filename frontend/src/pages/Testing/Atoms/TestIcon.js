@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Icon from "../../components/atoms/Icon/Icon";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Icon from "../../../components/atoms/Icon/Icon";
 
 const TestIcon = () => {
   return (

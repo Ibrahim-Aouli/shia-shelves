@@ -1,20 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import TestAvatar from "../pages/Atoms/TestAvatar";
-import TestButton from "../pages/Atoms/TestButton";
-import TestCheckbox from "../pages/Atoms/TestCheckbox";
-import TestDivider from "../pages/Atoms/TestDivider";
-import TestHeading from "../pages/Atoms/TestHeading";
-import TestIcon from "../pages/Atoms/TestIcon";
-import TestImage from "../pages/Atoms/TestImage";
-import TestInput from "../pages/Atoms/TestInput";
-import TestLabel from "../pages/Atoms/TestLabel";
-import TestLink from "../pages/Atoms/TestLink";
-import TestLoader from "../pages/Atoms/TestLoader";
-import TestRadioButton from "../pages/Atoms/TestRadioButton";
-import TestSeperator from "../pages/Atoms/TestSeperator";
-import TestTag from "../pages/Atoms/TestTag";
-import TestTextArea from "../pages/Atoms/TestTextArea";
+import TestAvatar from "../pages/Testing/Atoms/TestAvatar";
+import TestButton from "../pages/Testing/Atoms/TestButton";
+import TestCheckbox from "../pages/Testing/Atoms/TestCheckbox";
+import TestDivider from "../pages/Testing/Atoms/TestDivider";
+import TestHeading from "../pages/Testing/Atoms/TestHeading";
+import TestIcon from "../pages/Testing/Atoms/TestIcon";
+import TestImage from "../pages/Testing/Atoms/TestImage";
+import TestInput from "../pages/Testing/Atoms/TestInput";
+import TestLabel from "../pages/Testing/Atoms/TestLabel";
+import TestLink from "../pages/Testing/Atoms/TestLink";
+import TestLoader from "../pages/Testing/Atoms/TestLoader";
+import TestRadioButton from "../pages/Testing/Atoms/TestRadioButton";
+import TestSeperator from "../pages/Testing/Atoms/TestSeperator";
+import TestTag from "../pages/Testing/Atoms/TestTag";
+import TestTextArea from "../pages/Testing/Atoms/TestTextArea";
 
 const testPages = [
   { path: "avatar", component: TestAvatar, name: "Avatar" },

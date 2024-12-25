@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import RadioButton from "../../components/atoms/RadioButton/RadioButton";
+import Heading from "../../../components/atoms/Heading/Heading";
+import RadioButton from "../../../components/atoms/RadioButton/RadioButton";
 
 const TestRadioButton = () => {
   const [selected, setSelected] = useState("option1");

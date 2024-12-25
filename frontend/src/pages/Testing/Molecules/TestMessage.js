@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Message from "../../../components/molecules/Message/Message";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestMessage = () => {
   const [visible, setVisible] = useState(true);

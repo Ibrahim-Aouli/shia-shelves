@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Rating from "../../../components/molecules/Rating/Rating";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestRating = () => {
   const [rating, setRating] = useState(3);

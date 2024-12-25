@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Input from "../../components/atoms/Input/Input";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Input from "../../../components/atoms/Input/Input";
 
 const TestInput = () => {
   const [value, setValue] = useState("");

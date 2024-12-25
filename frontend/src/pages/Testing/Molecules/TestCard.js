@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../../components/molecules/Card/Card";
-import Heading from "../../components/atoms/Heading/Heading";
-import Button from "../../components/atoms/Button/Button";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Button from "../../../components/atoms/Button/Button";
 
 const TestCard = () => {
   return (

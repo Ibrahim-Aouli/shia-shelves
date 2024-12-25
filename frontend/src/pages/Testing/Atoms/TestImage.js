@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Image from "../../components/atoms/Image/Image";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Image from "../../../components/atoms/Image/Image";
 
 const TestImage = () => {
   return (

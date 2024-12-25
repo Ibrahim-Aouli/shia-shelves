@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Link from "../../components/atoms/Link/Link";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Link from "../../../components/atoms/Link/Link";
 
 const TestLink = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../../components/organisms/Navbar/Navbar";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestNavbar = () => {
   const user = { name: "John Doe" };

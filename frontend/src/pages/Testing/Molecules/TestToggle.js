@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Toggle from "../../../components/molecules/Toggle/Toggle";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestToggle = () => {
   const [isToggled, setIsToggled] = useState(false);

@@ -1,5 +1,5 @@
 import React from "react";
-import Heading from "../../components/atoms/Heading/Heading";
+import Heading from "../../../components/atoms/Heading/Heading";
 
 const TestHeading = () => {
   return (

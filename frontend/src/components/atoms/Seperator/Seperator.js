@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Textarea from "../../components/atoms/Textarea/Textarea";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Textarea from "../../../components/atoms/Textarea/Textarea";
 
 const TestTextarea = () => {
   const [value, setValue] = useState("");

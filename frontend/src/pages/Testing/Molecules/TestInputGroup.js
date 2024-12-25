@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputGroup from "../../../components/molecules/InputGroup/InputGroup";
-import Heading from "../../../components/atoms/Heading/Heading";
-import Icon from "../../../components/atoms/Icon/Icon";
+import Heading from "../../../../components/atoms/Heading/Heading";
+import Icon from "../../../../components/atoms/Icon/Icon";
 
 const TestInputGroup = () => {
   const [inputValue, setInputValue] = useState("");

@@ -1,6 +1,6 @@
 import React from "react";
 import TestTemplate from "./TestTemplate";
-import Divider from "../../components/atoms/Divider/Divider";
+import Divider from "../../../components/atoms/Divider/Divider";
 
 const TestDivider = () => {
   return (

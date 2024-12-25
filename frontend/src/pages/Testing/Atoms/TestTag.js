@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Tag from "../../components/atoms/Tag/Tag";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Tag from "../../../components/atoms/Tag/Tag";
 
 const TestTag = () => {
   return (

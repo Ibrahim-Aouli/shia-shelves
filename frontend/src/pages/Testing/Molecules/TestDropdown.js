@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Dropdown from "../../../components/molecules/Dropdown/Dropdown";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestDropdown = () => {
   const [selectedOption, setSelectedOption] = useState("");

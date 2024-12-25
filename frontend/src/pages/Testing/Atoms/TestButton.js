@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../../components/atoms/Button/Button";
-import Heading from "../../components/atoms/Heading/Heading";
+import Button from "../../../components/atoms/Button/Button";
+import Heading from "../../../components/atoms/Heading/Heading";
 
 const TestButton = () => {
   return (

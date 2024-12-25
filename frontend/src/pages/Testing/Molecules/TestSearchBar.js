@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "../../../components/molecules/SearchBar/SearchBar";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestSearchBar = () => {
   const [searchValue, setSearchValue] = useState("");

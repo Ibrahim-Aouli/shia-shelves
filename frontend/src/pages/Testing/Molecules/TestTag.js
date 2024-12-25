@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Tag from "../../../components/molecules/Tag/Tag";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestTag = () => {
   const [tags, setTags] = useState(["JavaScript", "React", "CSS"]);

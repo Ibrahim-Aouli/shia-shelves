@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../../../components/molecules/Modal/Modal";
-import Button from "../../../components/atoms/Button/Button";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Button from "../../../../components/atoms/Button/Button";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestModal = () => {
   const [isOpen, setIsOpen] = useState(false);

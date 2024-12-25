@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProgressBar from "../../../components/molecules/ProgressBar/ProgressBar";
-import Heading from "../../../components/atoms/Heading/Heading";
-import Button from "../../../components/atoms/Button/Button";
+import Heading from "../../../../components/atoms/Heading/Heading";
+import Button from "../../../../components/atoms/Button/Button";
 
 const TestProgressBar = () => {
   const [progress, setProgress] = useState(50);

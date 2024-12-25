@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Label from "../../components/atoms/Label/Label";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Label from "../../../components/atoms/Label/Label";
 
 const TestLabel = () => {
   return (

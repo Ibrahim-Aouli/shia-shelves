@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import Avatar from "../../../components/atoms/Avatar/Avatar";
-import Button from "../../../components/atoms/Button/Button";
-import Input from "../../../components/atoms/Input/Input";
-import Label from "../../../components/atoms/Label/Label";
-import Checkbox from "../../../components/atoms/Checkbox/Checkbox";
-import RadioButton from "../../../components/atoms/RadioButton/RadioButton";
-import Icon from "../../../components/atoms/Icon/Icon";
-import Image from "../../../components/atoms/Image/Image";
-import Heading from "../../../components/atoms/Heading/Heading";
-import Divider from "../../../components/atoms/Divider/Divider";
-import Link from "../../../components/atoms/Link/Link";
-import Loader from "../../../components/atoms/Loader/Loader";
+import Avatar from "../../../../components/atoms/Avatar/Avatar";
+import Button from "../../../../components/atoms/Button/Button";
+import Input from "../../../../components/atoms/Input/Input";
+import Label from "../../../../components/atoms/Label/Label";
+import Checkbox from "../../../../components/atoms/Checkbox/Checkbox";
+import RadioButton from "../../../../components/atoms/RadioButton/RadioButton";
+import Icon from "../../../../components/atoms/Icon/Icon";
+import Image from "../../../../components/atoms/Image/Image";
+import Heading from "../../../../components/atoms/Heading/Heading";
+import Divider from "../../../../components/atoms/Divider/Divider";
+import Link from "../../../../components/atoms/Link/Link";
+import Loader from "../../../../components/atoms/Loader/Loader";
 import styles from "./TestAtoms.module.css";
 
 const TestAtoms = () => {

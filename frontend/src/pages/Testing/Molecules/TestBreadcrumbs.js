@@ -1,6 +1,6 @@
 import React from "react";
 import Breadcrumb from "../../components/molecules/Breadcrumb/Breadcrumb";
-import Heading from "../../components/atoms/Heading/Heading";
+import Heading from "../../../components/atoms/Heading/Heading";
 
 const TestBreadcrumb = () => {
   const links = [

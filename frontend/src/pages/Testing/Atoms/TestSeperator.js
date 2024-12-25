@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Divider from "../../components/atoms/Divider/Divider";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Divider from "../../../components/atoms/Divider/Divider";
 
 const TestSeparator = () => {
   return (

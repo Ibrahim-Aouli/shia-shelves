@@ -1,6 +1,6 @@
 import React from "react";
 import UserInfo from "../../../components/molecules/UserInfo/UserInfo";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestUserInfo = () => {
   return (

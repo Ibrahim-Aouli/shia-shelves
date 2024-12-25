@@ -1,7 +1,7 @@
 import React from "react";
 import Tooltip from "../../../components/molecules/Tooltip/Tooltip";
-import Button from "../../../components/atoms/Button/Button";
-import Heading from "../../../components/atoms/Heading/Heading";
+import Button from "../../../../components/atoms/Button/Button";
+import Heading from "../../../../components/atoms/Heading/Heading";
 
 const TestTooltip = () => {
   return (

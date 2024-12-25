@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Checkbox from "../../components/atoms/Checkbox/Checkbox";
-import Heading from "../../components/atoms/Heading/Heading";
+import Checkbox from "../../../components/atoms/Checkbox/Checkbox";
+import Heading from "../../../components/atoms/Heading/Heading";
 
 const TestCheckbox = () => {
   const [checkedState, setCheckedState] = useState(false);

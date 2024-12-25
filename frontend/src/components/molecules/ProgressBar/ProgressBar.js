@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Pagination from "../../components/molecules/Pagination/Pagination";
-import Heading from "../../components/atoms/Heading/Heading";
+import Heading from "../../../components/atoms/Heading/Heading";
 
 const TestPagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
