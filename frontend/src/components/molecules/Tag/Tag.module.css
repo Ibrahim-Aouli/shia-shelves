@@ -1,0 +1,67 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    background-color: var(--color-grey-dark);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .tag:hover {
+    background-color: var(--color-grey);
+  }
+  
+  /* Variants */
+  .default {
+    background-color: var(--color-grey-dark);
+  }
+  
+  .success {
+    background-color: var(--color-green);
+  }
+  
+  .warning {
+    background-color: var(--color-yellow);
+  }
+  
+  .danger {
+    background-color: var(--color-red);
+  }
+  
+  /* Sizes */
+  .small {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs);
+  }
+  
+  .medium {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .large {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  /* Close Button */
+  .closeButton {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .closeButton:hover {
+    color: var(--color-white-dark);
+  }
+  

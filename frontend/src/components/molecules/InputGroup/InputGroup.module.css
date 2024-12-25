@@ -1,0 +1,67 @@
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--color-black);
+  }
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    border: 2px solid var(--color-grey-light);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    transition: border-color 0.2s ease;
+  }
+  
+  .wrapper:focus-within {
+    border-color: var(--color-green);
+  }
+  
+  .icon {
+    color: var(--color-grey-dark);
+    font-size: var(--font-size-base);
+  }
+  
+  .input {
+    flex-grow: 1;
+    border: none;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    outline: none;
+    padding: var(--spacing-xs);
+  }
+  
+  .input::placeholder {
+    color: var(--color-grey);
+  }
+  
+  .button {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: var(--color-green-light);
+  }
+  
+  .button:active {
+    transform: scale(0.98);
+  }
+  

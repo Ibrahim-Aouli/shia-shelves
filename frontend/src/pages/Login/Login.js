@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/auth";
 import AuthContext from "../../context/AuthContext";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/organisms/Header/Header";
+import Footer from "../../components/organisms/Footer/Footer";
 
 const Login = () => {
   const { login } = useContext(AuthContext);

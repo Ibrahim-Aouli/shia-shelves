@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Heading from "../../components/atoms/Heading/Heading";
-import Loader from "../../components/atoms/Loader/Loader";
-import Button from "../../components/atoms/Button/Button";
+import Heading from "../../../components/atoms/Heading/Heading";
+import Loader from "../../../components/atoms/Loader/Loader";
+import Button from "../../../components/atoms/Button/Button";
 
 const TestLoader = () => {
   const [loading, setLoading] = useState(false);

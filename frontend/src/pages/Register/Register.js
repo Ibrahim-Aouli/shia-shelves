@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../api/auth";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/organisms/Header/Header";
+import Footer from "../../components/organisms/Footer/Footer";
 
 const Register = () => {
   const [email, setEmail] = useState("");

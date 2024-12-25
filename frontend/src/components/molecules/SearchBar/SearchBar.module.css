@@ -1,6 +1,28 @@
 .searchBar {
-    display: flex;
-    gap: var(--spacing-small);
-    align-items: center;
-  }
-  
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.small {
+  --input-height: 2rem;
+}
+
+.medium {
+  --input-height: 2.5rem;
+}
+
+.large {
+  --input-height: 3rem;
+}
+
+.searchBar input {
+  height: var(--input-height);
+  flex: 1;
+}
+
+.searchBar button {
+  height: var(--input-height);
+  flex-shrink: 0;
+}

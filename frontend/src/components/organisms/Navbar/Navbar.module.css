@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--color-green);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .logo {
+    font-size: var(--font-size-xl);
+    font-family: var(--font-family-secondary);
+  }
+  
+  .links {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .welcome {
+    font-size: var(--font-size-sm);
+  }
+  
+  .logoText {
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: bold;
+  }
+  
+  .links a {
+    text-decoration: none;
+    color: var(--color-white);
+    transition: color 0.2s ease;
+  }
+  
+  .links a:hover {
+    color: var(--color-light-yellow);
+  }
+  

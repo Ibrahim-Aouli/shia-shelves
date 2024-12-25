@@ -1,0 +1,92 @@
+.tooltipContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip {
+    position: absolute;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    border-radius: var(--border-radius-sm);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 1000;
+  }
+  
+  /* Tooltip visibility on hover */
+  .tooltipContainer:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  /* Tooltip positions */
+  .top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  
+  .right {
+    top: 50%;
+    left: 100%;
+    transform: translateX(10px) translateY(-50%);
+  }
+  
+  .bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+  }
+  
+  .left {
+    top: 50%;
+    right: 100%;
+    transform: translateX(-10px) translateY(-50%);
+  }
+  
+  /* Arrow styles */
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+  }
+  
+  .top::after {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px 6px 0 6px;
+    border-color: var(--color-black) transparent transparent transparent;
+  }
+  
+  .right::after {
+    top: 50%;
+    left: -6px;
+    transform: translateY(-50%);
+    border-width: 6px 6px 6px 0;
+    border-color: transparent var(--color-black) transparent transparent;
+  }
+  
+  .bottom::after {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent var(--color-black) transparent;
+  }
+  
+  .left::after {
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-color: transparent transparent transparent var(--color-black);
+  }
+  

@@ -1,30 +1,50 @@
 .card {
-    background-color: var(--color-light);
-    border: var(--border-width) solid var(--color-grey);
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-md);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  
-  .card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-  }
-  
-  .card-title {
-    font-family: var(--font-family-primary);
-    font-size: var(--font-size-large);
-    color: var(--color-dark-green);
-  }
-  
-  .card-title.arabic {
-    font-family: var(--font-family-arabic-heading);
-  }
-  
-  .card-description {
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-base);
-    color: var(--color-grey-dark);
-  }
-  
+  display: flex;
+  flex-direction: column;
+  border: var(--border-width) solid var(--color-grey-light);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: var(--spacing-md);
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  font-family: var(--font-family-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cardDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-grey-dark);
+}
+
+.cardActions {
+  margin-top: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.cardFooter {
+  padding: var(--spacing-md);
+  background-color: var(--color-grey-light);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  color: var(--color-grey-dark);
+}

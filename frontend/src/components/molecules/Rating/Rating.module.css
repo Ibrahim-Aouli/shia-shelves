@@ -1,0 +1,31 @@
+.ratingWrapper {
+    display: flex;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+  }
+  
+  .icon {
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+  
+  .icon:hover:not(.readOnly) {
+    transform: scale(1.2);
+  }
+  
+  .icon.active {
+    color: var(--color-yellow);
+  }
+  
+  .readOnly {
+    cursor: default;
+  }
+  
+  .icon:focus {
+    outline: 2px dashed var(--color-yellow);
+    outline-offset: 2px;
+  }
+  

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchProducts } from "../../api/products";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/organisms/Header/Header";
+import Footer from "../../components/organisms/Footer/Footer";
 
 const Products = () => {
   const [products, setProducts] = useState([]);

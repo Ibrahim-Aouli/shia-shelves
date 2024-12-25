@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { fetchOrders, createOrder } from "../../api/orders";
 import AuthContext from "../../context/AuthContext";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/organisms/Header/Header";
+import Footer from "../../components/organisms/Footer/Footer";
 
 const Orders = () => {
   const { auth } = React.useContext(AuthContext);

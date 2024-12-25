@@ -1,0 +1,66 @@
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    font-family: var(--font-family-primary);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .message.success {
+    background-color: var(--color-green-light);
+    border-left: 4px solid var(--color-green);
+  }
+  
+  .message.error {
+    background-color: var(--color-red-light);
+    border-left: 4px solid var(--color-red);
+  }
+  
+  .message.warning {
+    background-color: var(--color-yellow-light);
+    border-left: 4px solid var(--color-yellow);
+  }
+  
+  .message.info {
+    background-color: var(--color-grey-light);
+    border-left: 4px solid var(--color-grey-dark);
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    color: var(--color-black);
+  }
+  
+  .content {
+    flex-grow: 1;
+  }
+  
+  .title {
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+  }
+  
+  .description {
+    font-size: var(--font-size-base);
+    color: var(--color-grey-dark);
+  }
+  
+  .closeButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-grey-dark);
+    font-size: var(--font-size-lg);
+    margin-left: auto;
+    padding: var(--spacing-xs);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  
+  .closeButton:hover {
+    color: var(--color-black);
+    transform: scale(1.1);
+  }
+  
