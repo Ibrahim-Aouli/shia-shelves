@@ -12,12 +12,18 @@ const addressSchema = new mongoose.Schema({
 }, { _id: false });
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, unique: true, required: true },
-  passwordHash: { type: String, required: true }, // Store hash, not plain text
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    match: [/^\S+@\S+\.\S+$/, 'Invalid email format.']
+  },  
+  password: { type: String, required: true }, // Store hash, not plain text
   name: { type: String, default: '' },
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
   addresses: { type: [addressSchema], default: [] },
-  orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }]
+  orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+  isActive: { type: Boolean, default: true }
 }, 
 { 
   timestamps: true 
