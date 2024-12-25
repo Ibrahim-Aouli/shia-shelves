@@ -3,29 +3,29 @@ const router = express.Router();
 const authenticateToken = require('../middleware/authenticationToken');
 const isAdmin = require('../middleware/isAdmin');
 
-// GET /products
+// GET /categories
 router.get('/', (req, res) => {
-    res.send('Get all products');
+    res.send('Get all categories');
 });
 
-// GET /products/:id
+// GET /categories/:id
 router.get('/:id', (req, res) => {
-    res.send(`Get product by ID: ${req.params.id}`);
+    res.send(`Get category by ID: ${req.params.id}`);
 });
 
-// POST /products
+// POST /categories
 router.post('/', authenticateToken, isAdmin, (req, res) => {
-    res.send('Create new product');
+    res.send('Create new category');
 });
 
-// PUT /products/:id
+// PUT /categories/:id
 router.put('/:id', authenticateToken, isAdmin, (req, res) => {
-    res.send(`Update product by ID: ${req.params.id}`);
+    res.send(`Update category by ID: ${req.params.id}`);
 });
 
-// DELETE /products/:id
+// DELETE /categories/:id
 router.delete('/:id', authenticateToken, isAdmin, (req, res) => {
-    res.send(`Delete product by ID: ${req.params.id}`);
+    res.send(`Delete category by ID: ${req.params.id}`);
 });
 
 module.exports = router;

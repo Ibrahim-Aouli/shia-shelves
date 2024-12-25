@@ -1,66 +1,30 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Cart = require("../models/Cart");
-const { Product } = require("../models/Product");
+const authenticateToken = require('../middleware/authenticationToken');
 
-// Add item to cart
-router.post("/add", async (req, res) => {
-  const { userId, productId, quantity } = req.body;
-
-  try {
-    // Find the product
-    const product = await Product.findById(productId);
-    if (!product) return res.status(404).json({ msg: "Product not found" });
-
-    // Find the cart or create a new one
-    let cart = await Cart.findOne({ user: userId });
-    if (!cart) {
-      cart = new Cart({ user: userId, items: [] });
-    }
-
-    // Check if item already exists in the cart
-    const existingItem = cart.items.find(
-      (item) => item.product.toString() === productId
-    );
-
-    if (existingItem) {
-      // Update quantity and price
-      existingItem.quantity += quantity;
-    } else {
-      // Add new item
-      cart.items.push({
-        product: productId,
-        name: product.name,
-        price: product.price,
-        quantity: quantity,
-      });
-    }
-
-    // Recalculate total amount
-    cart.totalAmount = cart.items.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-
-    await cart.save();
-    res.json(cart);
-  } catch (err) {
-    res.status(500).json({ msg: "Server Error", error: err.message });
-  }
+// POST /cart
+router.post('/', authenticateToken, (req, res) => {
+    res.send('Add item to cart');
 });
 
-// Retrieve cart
-router.get("/", async (req, res) => {
-  const { userId } = req.query;
+// GET /cart
+router.get('/', authenticateToken, (req, res) => {
+    res.send('Get cart items');
+});
 
-  try {
-    const cart = await Cart.findOne({ user: userId }).populate("items.product");
-    if (!cart) return res.status(404).json({ msg: "Cart is empty" });
+// PUT /cart/:itemId
+router.put('/:itemId', authenticateToken, (req, res) => {
+    res.send(`Update item in cart: ${req.params.itemId}`);
+});
 
-    res.json(cart);
-  } catch (err) {
-    res.status(500).json({ msg: "Server Error", error: err.message });
-  }
+// DELETE /cart/:itemId
+router.delete('/:itemId', authenticateToken, (req, res) => {
+    res.send(`Remove item from cart: ${req.params.itemId}`);
+});
+
+// DELETE /cart
+router.delete('/', authenticateToken, (req, res) => {
+    res.send('Clear cart');
 });
 
 module.exports = router;
