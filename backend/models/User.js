@@ -16,9 +16,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    match: [/^\S+@\S+\.\S+$/, 'Invalid email format.']
+    match: [/^\S+@\S+\.\S+$/, 'Invalid email format.'],
+    set: value => value.toLowerCase()
   },  
-  password: { type: String, required: true }, // Store hash, not plain text
+  password: { type: String, required: true },
   name: { type: String, default: '' },
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
   addresses: { type: [addressSchema], default: [] },
