@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchProducts } from "../../api/products";
-import Header from "../../components/organisms/Header/Header";
-import Footer from "../../components/organisms/Footer/Footer";
+import { fetchProducts } from "../../../../api/products";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -24,7 +22,6 @@ const Products = () => {
 
   return (
     <div>
-      <Header />
       <main>
         <h1>Products</h1>
         {loading && <p>Loading...</p>}
@@ -37,7 +34,6 @@ const Products = () => {
           ))}
         </ul>
       </main>
-      <Footer />
     </div>
   );
 };

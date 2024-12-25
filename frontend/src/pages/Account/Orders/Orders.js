@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { fetchOrders, createOrder } from "../../api/orders";
-import AuthContext from "../../context/AuthContext";
-import Header from "../../components/organisms/Header/Header";
-import Footer from "../../components/organisms/Footer/Footer";
+import { fetchOrders, createOrder } from "../../../api/orders";
+import AuthContext from "../../../context/AuthContext";
 
 const Orders = () => {
   const { auth } = React.useContext(AuthContext);
@@ -36,7 +34,6 @@ const Orders = () => {
 
   return (
     <div>
-      <Header />
       <main>
         <h1>Your Orders</h1>
         {error && <p>{error}</p>}
@@ -49,7 +46,6 @@ const Orders = () => {
           ))}
         </ul>
       </main>
-      <Footer />
     </div>
   );
 };

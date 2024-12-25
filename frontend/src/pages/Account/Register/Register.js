@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../api/auth";
-import Header from "../../components/organisms/Header/Header";
-import Footer from "../../components/organisms/Footer/Footer";
+import { registerUser } from "../../../api/auth";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +22,6 @@ const Register = () => {
 
   return (
     <div>
-      <Header />
       <main>
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
@@ -55,7 +52,6 @@ const Register = () => {
           <button type="submit">Register</button>
         </form>
       </main>
-      <Footer />
     </div>
   );
 };

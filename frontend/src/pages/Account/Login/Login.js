@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../api/auth";
-import AuthContext from "../../context/AuthContext";
-import Header from "../../components/organisms/Header/Header";
-import Footer from "../../components/organisms/Footer/Footer";
+import { loginUser } from "../../../api/auth";
+import AuthContext from "../../../context/AuthContext";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -24,7 +22,6 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
       <main>
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
@@ -43,7 +40,6 @@ const Login = () => {
           <button type="submit">Login</button>
         </form>
       </main>
-      <Footer />
     </div>
   );
 };

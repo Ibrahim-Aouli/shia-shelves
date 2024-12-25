@@ -5,7 +5,7 @@ import TestRouter from "./router/TestRouter";
 const App = () => {
   return (
     <div className="App">
-      <TestRouter />
+      {/* <TestRouter /> */}
       <AppRouter />
     </div>
   );
