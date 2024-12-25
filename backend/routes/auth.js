@@ -1,9 +1,11 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Assuming you have a User model
+const User = require('../models/User');
+const Cart = require('../models/Cart');
 const authenticateToken = require('../middleware/authenticationToken');
 const isGuest = require('../middleware/isGuest');
+const mergeCarts = require('../utils/mergeCarts');
 const router = express.Router();
 
 // POST /auth/login
@@ -26,6 +28,14 @@ router.post('/login', isGuest, async (req, res) => {
         }
 
         const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        // Merge guest cart into user cart
+        if (req.session.cart) {
+            const mergedCart = await mergeCarts(user._id, req.session.cart);
+            req.session.cart = null; // Clear session cart
+        }
+
+                
         res.status(200).json({ message: 'Login successful.', token });
     } catch (err) {
         console.error(err);
