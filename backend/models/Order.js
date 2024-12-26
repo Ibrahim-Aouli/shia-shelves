@@ -28,7 +28,14 @@ const orderSchema = new mongoose.Schema({
     type: String, 
     enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'], 
     default: 'pending' 
-  }
+  },
+  trackingId: { type: String, unique: true, required: true }, // For tracking orders
+  notes: { type: String, default: '' }, // Optional notes or comments
+  paymentStatus: { 
+    type: String, 
+    enum: ['pending', 'paid', 'failed'], 
+    default: 'pending' 
+},
 }, { timestamps: true });
 
 const Order = mongoose.model('Order', orderSchema);
