@@ -4,10 +4,12 @@ const authenticateToken = require('../middleware/authenticationToken');
 const isAdmin = require('../middleware/isAdmin');
 const Order = require('../models/Order');
 const User = require('../models/User');
+const logger = require('../utils/logger'); // Import custom logger
 
 // GET /reports/sales - Generate sales report
 router.get('/sales', authenticateToken, isAdmin, async (req, res) => {
     try {
+        logger.action('Generating sales report');
         const orders = await Order.find();
 
         // Total sales and orders
@@ -22,13 +24,14 @@ router.get('/sales', authenticateToken, isAdmin, async (req, res) => {
             salesByDate[date] += order.totalAmount;
         });
 
+        logger.success('Sales report generated successfully', { totalSales, totalOrders, salesByDate });
         res.status(200).json({
             totalSales,
             totalOrders,
             salesByDate
         });
     } catch (err) {
-        console.error(err);
+        logger.error('Error generating sales report', err);
         res.status(500).json({ error: 'Internal server error.' });
     }
 });
@@ -37,6 +40,7 @@ router.get('/sales', authenticateToken, isAdmin, async (req, res) => {
 router.get('/users', authenticateToken, isAdmin, async (req, res) => {
     try {
         const { startDate, endDate } = req.query;
+        logger.action('Generating user activity report', { startDate, endDate });
 
         // Total registered users
         const totalUsers = await User.countDocuments();
@@ -48,6 +52,13 @@ router.get('/users', authenticateToken, isAdmin, async (req, res) => {
 
         const newUsers = await User.countDocuments(filter);
 
+        logger.success('User activity report generated successfully', {
+            totalUsers,
+            newUsers,
+            startDate: startDate || null,
+            endDate: endDate || null
+        });
+
         res.status(200).json({
             totalUsers,
             newUsers,
@@ -55,7 +66,7 @@ router.get('/users', authenticateToken, isAdmin, async (req, res) => {
             endDate: endDate || null
         });
     } catch (err) {
-        console.error(err);
+        logger.error('Error generating user activity report', err);
         res.status(500).json({ error: 'Internal server error.' });
     }
 });

@@ -1,20 +1,36 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const logger = require("../utils/logger"); // Importing custom logger
 
+/**
+ * Middleware to authenticate and verify JSON Web Tokens (JWTs).
+ */
 const authenticateToken = async (req, res, next) => {
-  const token = req.header("Authorization")?.split(" ")[1]; // Extract token from Authorization header
-  if (!token) return res.status(401).json({ error: "Access denied, no token provided." });
+    const token = req.header("Authorization")?.split(" ")[1]; // Extract token from Authorization header
 
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify token
-    req.user = await User.findById(decoded.id).select("_id email role"); // Fetch user details
+    if (!token) {
+        logger.warning("Access attempt without a token"); // Log missing token scenario
+        return res.status(401).json({ error: "Access denied, no token provided." });
+    }
 
-    if (!req.user) return res.status(401).json({ error: "Invalid token." });
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify token
+        logger.log("Token verified successfully", { decoded });
 
-    next();
-  } catch (err) {
-    res.status(400).json({ error: "Invalid token." }); // Invalid token handling
-  }
+        // Fetch the user details using the decoded ID from the token
+        req.user = await User.findById(decoded.id).select("_id email role");
+
+        if (!req.user) {
+            logger.warning("Token verified but no matching user found", { userId: decoded.id });
+            return res.status(401).json({ error: "Invalid token." });
+        }
+
+        logger.success("User authenticated", { userId: req.user._id, role: req.user.role });
+        next(); // Proceed to the next middleware
+    } catch (err) {
+        logger.error("Token verification failed", err); // Log error details
+        res.status(400).json({ error: "Invalid token." });
+    }
 };
 
 module.exports = authenticateToken;

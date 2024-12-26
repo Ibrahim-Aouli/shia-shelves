@@ -1,28 +1,73 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const helmet = require("helmet");
 require("dotenv").config();
+
+const logger = require("./utils/logger"); // Import the logger utility
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const dbUri = process.env.NODE_ENV === "test" ? process.env.TEST_DB_URI : process.env.DB_URI;
+
+// Log environment variables
+logger.log("Environment Variables Loaded", {
+  PORT,
+  NODE_ENV: process.env.NODE_ENV,
+  DB_URI: process.env.DB_URI,
+  TEST_DB_URI: process.env.TEST_DB_URI,
+  SESSION_SECRET: process.env.SESSION_SECRET ? "****" : "NOT SET",
+  VERBOSE: process.env.VERBOSE,
+});
 
 // Middleware
-app.use(cors()); // Enable CORS for all origins
-app.use(express.json()); // Parse JSON request bodies
+logger.action("Initializing Middleware");
+app.use(helmet());
+logger.success("Helmet initialized for security headers");
+app.use(cors());
+logger.success("CORS enabled for all origins");
+app.use(express.json());
+logger.success("JSON request body parser initialized");
+
+// Session Middleware
+logger.action("Setting up session middleware");
+if (!process.env.SESSION_SECRET) {
+  logger.warning("Session middleware is using the default secret. This is not secure!");
+}
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "fallback-secret",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: dbUri,
+      ttl: 14 * 24 * 60 * 60, // Session lifetime (14 days)
+    }),
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      sameSite: "lax",
+    },
+  })
+);
+logger.success("Session middleware initialized");
 
 // MongoDB Connection
+logger.action("Connecting to MongoDB", { dbUri });
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected..."))
-  .catch((err) => {
-    console.error("MongoDB connection error:", err);
-    process.exit(1); // Exit the application if the database fails to connect
-  });
+  .connect(dbUri)
+  .then(() => logger.success("MongoDB connected successfully"))
+  .catch((err) => logger.error("MongoDB connection error", err));
 
 // Root Endpoint
+logger.action("Setting up root endpoint");
 app.get("/", (req, res) => res.send("Backend is running..."));
 
 // Import Routes
+logger.action("Importing routes");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const productRoutes = require("./routes/products");
@@ -36,6 +81,7 @@ const reportRoutes = require("./routes/reports");
 const uploadRoutes = require("./routes/upload");
 
 // API Routes
+logger.action("Setting up API routes");
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
@@ -49,12 +95,12 @@ app.use("/reports", reportRoutes);
 app.use("/upload", uploadRoutes);
 
 // Error Handling Middleware (Global)
+logger.action("Setting up error handling middleware");
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  logger.error("Global error handler caught an error", err);
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-// Start Server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+logger.success("Server initialization complete");
 
 module.exports = app;
