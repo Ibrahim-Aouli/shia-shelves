@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const User = require("./models/User");
-const Product = require("./models/Product");
-const Category = require("./models/Category");
-const Cart = require("./models/Cart");
-const Order = require("./models/Order");
-const FAQ = require("./models/FAQ");
-const Contact = require("./models/Contact");
+const User = require("../models/User");
+const Product = require("../models/Product");
+const Category = require("../models/Category");
+const Cart = require("../models/Cart");
+const Order = require("../models/Order");
+const FAQ = require("../models/FAQ");
+const Contact = require("../models/Contact");
 
 require("dotenv").config();
 
