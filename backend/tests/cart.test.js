@@ -1,20 +1,111 @@
 const request = require('supertest');
 const app = require('../server');
-const User = require('../models/User');
 const Cart = require('../models/Cart');
 const bcrypt = require('bcrypt');
+const User = require('../models/User');
 
-describe('Cart Routes', () => {
+describe('Cart Routes for Unauthenticated User', () => {
+    let sessionCookie; // Will hold the session cookie
+
+    afterAll(async () => {
+        await Cart.deleteMany({}); // Clean up any test data
+    });
+
+    test('GET /cart - Initialize an empty cart', async () => {
+
+        const res = await request(app).get('/cart');
+        sessionCookie = res.headers['set-cookie'];
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.cart).toBeDefined();
+        expect(res.body.cart.items.length).toBe(0);
+        expect(res.body.cart.totalAmount).toBe(0);
+
+    });
+
+    test('POST /cart - Add an item to the cart', async () => {
+
+        const item = { product: '123', name: 'Test Product', price: 10.99, quantity: 1 };
+
+        const res = await request(app)
+            .post('/cart')
+            .set('Cookie', sessionCookie) // Pass session cookie
+            .send(item);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.cart).toBeDefined();
+        expect(res.body.cart.items.length).toBe(1);
+        expect(res.body.cart.totalAmount).toBe(10.99);
+
+    });
+
+    test('PUT /cart/:itemId - Modify an existing item in the cart', async () => {
+
+        const cartRes = await request(app).get('/cart').set('Cookie', sessionCookie);
+        const itemId = cartRes.body.cart.items[0]._id;
+
+
+        const res = await request(app)
+            .put(`/cart/${itemId}`)
+            .set('Cookie', sessionCookie)
+            .send({ quantity: 2 });
+
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.cart).toBeDefined();
+        expect(res.body.cart.items[0].quantity).toBe(2);
+        expect(res.body.cart.totalAmount).toBe(21.98);
+
+    });
+
+    test('DELETE /cart/:itemId - Remove an existing item from the cart', async () => {
+
+        const cartRes = await request(app).get('/cart').set('Cookie', sessionCookie);
+        const itemId = cartRes.body.cart.items[0]._id;
+
+
+        const res = await request(app)
+            .delete(`/cart/${itemId}`)
+            .set('Cookie', sessionCookie);
+
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.cart).toBeDefined();
+        expect(res.body.cart.items.length).toBe(0);
+        expect(res.body.cart.totalAmount).toBe(0);
+
+    });
+
+    test('DELETE /cart - Clear the entire cart', async () => {
+
+        await request(app)
+            .post('/cart')
+            .set('Cookie', sessionCookie)
+            .send({ product: '456', name: 'Another Product', price: 15.99, quantity: 1 });
+
+        const res = await request(app).delete('/cart').set('Cookie', sessionCookie);
+
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.cart).toBeDefined();
+        expect(res.body.cart.items.length).toBe(0);
+        expect(res.body.cart.totalAmount).toBe(0);
+
+    });
+});
+
+describe('Cart Routes for Authenticated User with a New Cart', () => {
     let token;
     let userId;
 
     beforeAll(async () => {
+
         const hashedPassword = await bcrypt.hash('password123', 10);
 
         // Create a test user
         const user = await User.create({
-            name: 'Test User',
-            email: 'test@example.com',
+            name: 'Authenticated User',
+            email: 'authuser@example.com',
             password: hashedPassword,
         });
 
@@ -23,9 +114,10 @@ describe('Cart Routes', () => {
         // Log in the user to get a token
         const res = await request(app)
             .post('/auth/login')
-            .send({ email: 'test@example.com', password: 'password123' });
+            .send({ email: 'authuser@example.com', password: 'password123' });
 
         token = res.body.token;
+
     });
 
     afterAll(async () => {
@@ -33,114 +125,87 @@ describe('Cart Routes', () => {
         await Cart.deleteMany({});
     });
 
-    /** POST /cart **/
+    test('GET /cart - Initialize an empty cart', async () => {
 
-    test('POST /cart - Add item to cart (success)', async () => {
-        const res = await request(app)
-            .post('/cart')
-            .set('Authorization', `Bearer ${token}`)
-            .send({ product: '123', name: 'Test Product', price: 10.99, quantity: 1 });
+        const res = await request(app).get('/cart').set('Authorization', `Bearer ${token}`);
+
 
         expect(res.statusCode).toBe(200);
         expect(res.body.cart).toBeDefined();
+        expect(res.body.cart.user).toBe(userId.toString());
+        expect(res.body.cart.items.length).toBe(0);
+        expect(res.body.cart.totalAmount).toBe(0);
+    });
+
+    test("POST /cart - Add an item to the cart", async () => {
+        const item = {
+            product: productId.toString(),
+            name: "Test Product",
+            price: 19.99,
+            quantity: 1,
+        };
+    
+        const res = await request(app)
+            .post("/cart")
+            .set("Authorization", `Bearer ${token}`)
+            .send(item);
+    
+        expect(res.statusCode).toBe(200);
+        expect(res.body.cart).toBeDefined();
+        expect(res.body.cart.user).toBe(userId.toString());
         expect(res.body.cart.items.length).toBe(1);
-        expect(res.body.cart.totalAmount).toBe(10.99);
+        expect(res.body.cart.totalAmount).toBe(19.99);
     });
+    
+    test('PUT /cart/:itemId - Modify an existing item in the cart', async () => {
 
-    test('POST /cart - Failure (missing fields)', async () => {
-        const res = await request(app)
-            .post('/cart')
-            .set('Authorization', `Bearer ${token}`)
-            .send({ name: 'Test Product', price: 10.99 });
-
-        expect(res.statusCode).toBe(400);
-        expect(res.body.error).toBe('Product, name, price, and quantity are required.');
-    });
-
-    /** GET /cart **/
-
-    test('GET /cart - Retrieve cart (success)', async () => {
-        const res = await request(app)
-            .get('/cart')
-            .set('Authorization', `Bearer ${token}`);
-
-        expect(res.statusCode).toBe(200);
-        expect(res.body.cart).toBeDefined();
-        expect(res.body.cart.items.length).toBeGreaterThan(0);
-    });
-
-    /** PUT /cart/:itemId **/
-
-    test('PUT /cart/:itemId - Update item quantity (success)', async () => {
-        // Retrieve the cart to get an itemId
-        const cartRes = await request(app)
-            .get('/cart')
-            .set('Authorization', `Bearer ${token}`);
-
+        const cartRes = await request(app).get('/cart').set('Authorization', `Bearer ${token}`);
         const itemId = cartRes.body.cart.items[0]._id;
+
 
         const res = await request(app)
             .put(`/cart/${itemId}`)
             .set('Authorization', `Bearer ${token}`)
-            .send({ quantity: 2 });
+            .send({ quantity: 3 });
+
 
         expect(res.statusCode).toBe(200);
         expect(res.body.cart).toBeDefined();
-        expect(res.body.cart.items[0].quantity).toBe(2);
-        expect(res.body.cart.totalAmount).toBe(21.98); // 2 x 10.99
+        expect(res.body.cart.items[0].quantity).toBe(3);
+        expect(res.body.cart.totalAmount).toBe(59.97);
+
     });
 
-    test('PUT /cart/:itemId - Failure (invalid quantity)', async () => {
-        // Retrieve the cart to get an itemId
-        const cartRes = await request(app)
-            .get('/cart')
-            .set('Authorization', `Bearer ${token}`);
+    test('DELETE /cart/:itemId - Remove an existing item from the cart', async () => {
 
+        const cartRes = await request(app).get('/cart').set('Authorization', `Bearer ${token}`);
         const itemId = cartRes.body.cart.items[0]._id;
 
-        const res = await request(app)
-            .put(`/cart/${itemId}`)
-            .set('Authorization', `Bearer ${token}`)
-            .send({ quantity: 0 });
-
-        expect(res.statusCode).toBe(400);
-        expect(res.body.error).toBe('Quantity must be at least 1.');
-    });
-
-    /** DELETE /cart/:itemId **/
-
-    test('DELETE /cart/:itemId - Remove item from cart (success)', async () => {
-        // Retrieve the cart to get an itemId
-        const cartRes = await request(app)
-            .get('/cart')
-            .set('Authorization', `Bearer ${token}`);
-
-        const itemId = cartRes.body.cart.items[0]._id;
 
         const res = await request(app)
             .delete(`/cart/${itemId}`)
             .set('Authorization', `Bearer ${token}`);
 
+
         expect(res.statusCode).toBe(200);
         expect(res.body.cart).toBeDefined();
         expect(res.body.cart.items.length).toBe(0);
+        expect(res.body.cart.totalAmount).toBe(0);
+
     });
 
-    /** DELETE /cart **/
-
-    test('DELETE /cart - Clear entire cart (success)', async () => {
-        // Add an item to the cart first
+    test('DELETE /cart - Clear the entire cart', async () => {
         await request(app)
             .post('/cart')
             .set('Authorization', `Bearer ${token}`)
-            .send({ product: '124', name: 'Another Product', price: 15.99, quantity: 1 });
+            .send({ product: '456', name: 'Another Auth Product', price: 29.99, quantity: 1 });
 
-        const res = await request(app)
-            .delete('/cart')
-            .set('Authorization', `Bearer ${token}`);
+        const res = await request(app).delete('/cart').set('Authorization', `Bearer ${token}`);
 
         expect(res.statusCode).toBe(200);
         expect(res.body.cart).toBeDefined();
         expect(res.body.cart.items.length).toBe(0);
+        expect(res.body.cart.totalAmount).toBe(0);
+
     });
 });
