@@ -9,8 +9,8 @@ const authenticateToken = async (req, res, next) => {
     const token = req.header("Authorization")?.split(" ")[1]; // Extract token from Authorization header
 
     if (!token) {
-        logger.warning("Access attempt without a token"); // Log missing token scenario
-        return res.status(401).json({ error: "Access denied, no token provided." });
+        logger.warning("Access attempt without a token", { ip: req.ip, url: req.originalUrl });
+        return res.status(401).json({ error: "Access denied, no token provided." }); // Explicitly return 401
     }
 
     try {
@@ -25,12 +25,23 @@ const authenticateToken = async (req, res, next) => {
             return res.status(401).json({ error: "Invalid token." });
         }
 
-        logger.success("User authenticated", { userId: req.user._id, role: req.user.role });
+        logger.success("User authenticated", {
+            userId: req.user._id,
+            role: req.user.role,
+            ip: req.ip,
+            url: req.originalUrl,
+        });
+                
         next(); // Proceed to the next middleware
     } catch (err) {
-        logger.error("Token verification failed", err); // Log error details
-        res.status(400).json({ error: "Invalid token." });
-    }
+        if (err.name === "TokenExpiredError") {
+            logger.warning("Token expired", { error: err.message });
+            res.status(401).json({ error: "Token expired." });
+        } else {
+            logger.error("Token verification failed", err);
+            res.status(400).json({ error: "Invalid token." });
+        }
+    }    
 };
 
 module.exports = authenticateToken;
