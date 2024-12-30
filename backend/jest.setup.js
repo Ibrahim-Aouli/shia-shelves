@@ -3,6 +3,7 @@ process.env.VERBOSE = 'true'; // Set VERBOSE explicitly for tests
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const logger = require('./utils/logger'); // Import your logger
+const seed = require('./utils/seed'); // Adjusted path
 
 // Global variable to track the session store if used
 let mongoStore;
@@ -59,6 +60,7 @@ beforeEach(() => {
 
 beforeAll(async () => {
     logger.test('⚙️ Setting up before all tests', 'info');
+    await seed(); // Call the seed script to populate the test database
 
 });
 

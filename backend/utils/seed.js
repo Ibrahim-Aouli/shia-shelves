@@ -7,6 +7,8 @@ const Cart = require("../models/Cart");
 const Order = require("../models/Order");
 const FAQ = require("../models/FAQ");
 const Contact = require("../models/Contact");
+const logger = require('./logger'); 
+
 
 require("dotenv").config();
 
@@ -14,15 +16,15 @@ mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    console.log("Connected to MongoDB.");
+    logger.success("Connected to MongoDB.");
 }).catch(err => {
-    console.error("Error connecting to MongoDB:", err);
+    logger.error("Error connecting to MongoDB:", err);
     process.exit(1);
 });
 
 const seedData = async () => {
     try {
-        console.log("Seeding data for Shia Shelves...");
+        logger.action("Seeding data for Shia Shelves...");
 
         // Clear existing data
         await User.deleteMany();
@@ -41,7 +43,7 @@ const seedData = async () => {
             { name: "clothing", description: "Modest clothing and Islamic attire." },
             { name: "miscellaneous", description: "Other items for your spiritual journey." },
         ]);
-        console.log("Categories seeded.");
+        logger.success("Categories seeded.");
 
         // Seed Products
         const products = await Product.insertMany([
@@ -108,7 +110,7 @@ const seedData = async () => {
                 tags: ["Ziyarat", "Shia", "Travel"]
             },
         ]);
-        console.log("Products seeded.");
+        logger.success("Products seeded.");
 
         // Seed Users
         const hashedPassword = await bcrypt.hash("password123", 10);
@@ -139,7 +141,7 @@ const seedData = async () => {
                 isActive: true
             },
         ]);
-        console.log("Users seeded.");
+        logger.success("Users seeded.");
 
         // Seed FAQs
         await FAQ.insertMany([
@@ -147,7 +149,7 @@ const seedData = async () => {
             { question: "Do you ship internationally?", answer: "Yes, we offer international shipping for most of our products." },
             { question: "What is your return policy?", answer: "We accept returns within 14 days of purchase, provided the item is in its original condition." },
         ]);
-        console.log("FAQs seeded.");
+        logger.success("FAQs seeded.");
 
         // Seed Contacts
         await Contact.insertMany([
@@ -164,11 +166,11 @@ const seedData = async () => {
                 message: "Can you recommend a good book for someone new to Shia Islam?"
             }
         ]);
-        console.log("Contacts seeded.");
+        logger.success("Contacts seeded.");
 
-        console.log("Seeding completed for Shia Shelves!");
+        logger.success("Seeding completed for Shia Shelves!");
     } catch (err) {
-        console.error("Error seeding data:", err);
+        logger.error("Error seeding data:", err);
     } finally {
         mongoose.connection.close();
     }
